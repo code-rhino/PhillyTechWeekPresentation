@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Hybrid Apps Course Labs</title>
+<title>Installation and Setup</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -417,6 +417,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -572,12 +573,14 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Building Hybrid mobile apps<br>The right way <br>(Like a G!)</h1>
+<h1><a id="spring-framework"></a>Installation and Setup</h1>
 <div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
+<div id="toctitle">Labs</div>
 <ul class="sectlevel1">
-<li><a href="#_resources">Additional Resources</a></li>
-<li><a href="#_github">Github</a></li>
+  <li><a href="#_OSX">OSX</a></li>
+  <li><a href="#_windows">Windows</a></li>
+  <li><a href="#_ionic">Ionic</a></li>
+  <li><a href="#_vs">Visual Studio Code</a></li>
 </ul>
 </div>
 </div>
@@ -585,44 +588,133 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the Building Hybrid mobile apps Labs, here you will find all the links to all the Labs that are covered in this Course.</p>
+<p>Review all the necessary steps required to get started with <strong>Ionic 3</strong>.</p>
 </div>
+
+<!-- toc disabled -->
+</div>
+</div>
+<div class="sect1">
+  <h1 id="_OSX">OS X Setup</h1>
+
+  <h2 id="prerequisites">Prerequisites</h2>
+  <ul>
+    <li><strong>You should have some familiarity with the Mac Terminal application</strong> since you’ll need to use it to install and test Node and NPM. You’ll also need the Terminal to use Node.js and NPM. The Terminal application is located in the Utilities folder in the Applications folder.</li>
+    <li><strong>Dependencies.</strong> Although you can install Node in other ways, we recommend using Homebrew. Homebrew lets you avoid possible security problems associated with using the <code class="highlighter-rouge">sudo</code> command to install software like Node and Node modules.
+      <ul>
+        <li><strong>Open the Terminal app</strong>.</li>
+        <li><strong>Type</strong> <code class="highlighter-rouge">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code> You’ll see messages in the Terminal explaining what you need to do to complete the installation process. You can learn more about Homebrew at the <a href="http://brew.sh/">Homebrew website</a>.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2 id="installation-overview">Installation Overview</h2>
+  <p>Installing Node.js® and NPM is pretty straightforward using Homebrew. Homebrew handles downloading, unpacking and installing Node and NPM on your system. The whole process (after you have Homebrew installed) should only take you a few minutes.</p>
+
+  <h2 id="installation-steps">Installation Steps</h2>
+  <ul>
+    <li><strong>Open the Terminal app</strong> and type <code class="highlighter-rouge">brew update</code>. This updates Homebrew with a list of the latest version of Node.</li>
+    <li>**Type <code class="highlighter-rouge">brew install node</code>.</li>
+    <li><strong>Sit back and wait.</strong> Homebrew has to download some files and install them. But that’s it.</li>
+  </ul>
+
+  <h2 id="test-it">Test it!</h2>
+  <p>Make sure you have Node and NPM installed by running simple commands to see what version of each is installed:</p>
+
+  <ul>
+    <li><strong>Test Node.</strong> To see if Node is installed, type <code class="highlighter-rouge">node -v</code> in Terminal. This should print the version number so you’ll see something like this <code class="highlighter-rouge">v0.10.31</code>.</li>
+    <li><strong>Test NPM.</strong> To see if NPM is installed, type <code class="highlighter-rouge">npm -v</code> in Terminal. This should print the version number so you’ll see something like this <code class="highlighter-rouge">1.4.27</code></li>
+  </ul>
+
+  <p><img src="./Installing Node.js® and NPM on Mac_files/node-install1.png" alt=""></p>
+
+  <h2 id="how-to-update-node-and-npm">How to Update Node and NPM</h2>
+  <p>New versions of Node and NPM come out frequently. You can use Homebrew to update the software it installs.</p>
+
+  <ol>
+    <li>Make sure Homebrew has the latest version of the Node package. In Terminal type
+  <code class="highlighter-rouge">brew update</code></li>
+    <li>Upgrade Node: <code class="highlighter-rouge">brew upgrade node</code></li>
+  </ol>
+
+  <h2 id="how-to-uninstall-node-and-npm">How to Uninstall Node and NPM</h2>
+  <p>You can use Homebrew to uninstall packages that it installed:</p>
+
+  <p><code class="highlighter-rouge">brew uninstall node</code></p>
+
+</div>
+
+<div class="sect1">
+  <h1 id="_windows">Windows Setup</h1>
+<div class="sectionbody">
 <div class="olist arabic">
 <ol class="arabic">
-  <li>
-  <p><li><a href="morning-session.html" target="_blank">Morning Session</a></li></p>
-  </li>
 <li>
-<p><a href="01-installation-and-setup.html" target="_blank">Installation and Setup</a></p>
+<p>Installing Node and NPM is pretty straightforward using the installer package available from the Node.js® web site.</p>
 </li>
 <li>
-<p><a href="02-login-page.html" target="_blank">Create Login Page</a></p>
+  You will need to use PowerShell please install <a href="https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6"  target="_blank"> instructions </a>
+</li>
+<li>
+<h2>Installation Overview</h2>
+<p>Installing Node and NPM is pretty straightforward using the installer package available&nbsp;from the Node.js® web site.</p>
+<h2>Installation Steps</h2>
+<ol>
+<li><strong>Download the Windows installer from&nbsp;the <a href="http://nodejs.org/" target="_blank">Nodes.js® web site</a>.</strong></li>
+<li><strong>Run the installer</strong> (the .msi file you downloaded in the previous step.)</li>
+<li><strong>Follow the prompts in the installer</strong> (Accept the license agreement, click the NEXT button a bunch of times and accept the default installation settings).<br>
+<img class="alignnone size-full wp-image-24630" src="./How to Install Node.js® and NPM on Windows - Treehouse Blog_files/installer.png" alt="installer" srcset="http://blog.teamtreehouse.com/wp-content/uploads/2015/01/installer.png 509w, http://blog.teamtreehouse.com/wp-content/uploads/2015/01/installer-300x234.png 300w, http://blog.teamtreehouse.com/wp-content/uploads/2015/01/installer-383x300.png 383w" sizes="(max-width: 509px) 100vw, 509px"></li>
+<li><strong>Restart your computer.</strong> You won’t be able to run Node.js® until you restart your computer.</li>
+</ol>
+<h2>Test it!</h2>
+<p>Make sure you have Node and NPM installed by running simple commands to see what version of each is installed and to run a simple test program:</p>
+<ul>
+<li><strong>Test Node.</strong> To see if Node is installed, open the Windows Command Prompt, Powershell or a similar command line tool, and type <code>node -v</code>. This should print a&nbsp;version number, so you’ll see something like this <code>v0.10.35</code>.</li>
+<li><strong>Test NPM.</strong> To see if NPM is installed, type <code>npm -v</code> in Terminal. This should print NPM’s&nbsp;version number so you’ll see something like this <code>1.4.28</code></li>
+<li><strong>Create a test file and run it.</strong> A simple way to test that node.js works is to create a JavaScript file: name it <code>hello.js</code>, and just add the code <code>console.log('Node is installed!');</code>. To run the code simply open your command line program, navigate to the folder where you save the file and type <code>node hello.js</code>. This will start Node and run the code in the <code>hello.js</code> file. You should see the output <code>Node is installed!</code>.</li>
+</ul>
+<h2><a href="./How to Install Node.js® and NPM on Windows - Treehouse Blog_files/verify.png"><img class="alignnone size-full wp-image-24633" src="./How to Install Node.js® and NPM on Windows - Treehouse Blog_files/verify.png" alt="verify" srcset="http://blog.teamtreehouse.com/wp-content/uploads/2015/01/verify.png 755w, http://blog.teamtreehouse.com/wp-content/uploads/2015/01/verify-300x168.png 300w, http://blog.teamtreehouse.com/wp-content/uploads/2015/01/verify-500x280.png 500w" sizes="(max-width: 755px) 100vw, 755px"></a><br><br>How to Update Node and NPM</h2>
+<p>New versions of Node and NPM come out frequently. To install the updates, just <a href="http://nodejs.org/download/">download the installer</a> from the Nodejs.org site and run it again. The new version of Node and NPM will replace the older versions.</p>
+<h2>How to Uninstall Node and NPM</h2>
+<p>You uninstall Node.js and NPM the same as you would most Windows software:</p>
+<ol>
+<li>Open the Windows Control Panel</li>
+<li>Choose the “Programs and Features” option</li>
+<li>Click the “Uninstall a program” option</li>
+<li>Select Node.js, and click the Uninstall link.</li>
+</ol>
 </li>
 
+</div>
+</div>
+</li>
 </ol>
 </div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_resources">Additional Resources</h2>
-<div class="sectionbody">
-<div class="paragraph">
-  <p><a href="https://ionicframework.com/" target="_blank">Ionic Framework</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_github">Github</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="" target="_blank">Repo link</a></p>
+  <h1 id="_ionic">Ionic Framework Setup</h1>
+  <p>Once Node is installed you can install ionic using Node Package Manager.</p>
+  <div class="listingblock">
+  <div class="content">
+  <pre class="CodeRay highlight"><code data-lang="html">npm install -g ionic</code></pre>
+  </div>
+  </div>
+
+  </div>
+  <div class="sect1">
+    <h1 id="_vs">Visual Studio</h1>
+    <p>You are welcome to use any IDE you choose, but we suggest Visual Studio Code. <a href="https://www.visualstudio.com/downloads/" target="_blank">VSC Download</a></p>
+    </div>
+    </div>
+  </li>
+
+
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-5-1 12:16:08 PST
+Last updated 2017-11-16 20:13:24 PST
 </div>
 </div>
 </body>
