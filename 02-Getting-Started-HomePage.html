@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5">
-<title>Hybrid Apps Course Labs</title>
+<title>Ionic</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -417,6 +417,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -572,12 +573,13 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Building Hybrid mobile apps<br>The right way <br>(Like a G!)</h1>
+<h1><a id="spring-framework"></a>Home Page</h1>
 <div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
+<div id="toctitle">Labs</div>
 <ul class="sectlevel1">
-<li><a href="#_resources">Additional Resources</a></li>
-<li><a href="#_github">Github</a></li>
+  <!--<li><a href="#_step1">Step 1</a></li>
+ <li><a href="#_step2">Step 2</a></li>
+ <li><a href="#_step3">Step 3</a></li>-->
 </ul>
 </div>
 </div>
@@ -585,54 +587,186 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Welcome to the Building Hybrid mobile apps Labs, here you will find all the links to all the Labs that are covered in this Course.</p>
+<p>Its time to start adding functionality</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-  <li>
-  <p><a href="morning-session.html" target="_blank">Lecture</a></p>
-  </li>
-<li>
-<p><a href="01-installation-and-setup.html" target="_blank">Installation and Setup</a></p>
-</li>
-<li>
-<p><a href="02-Getting-Started-HomePage.html" target="_blank">Getting Started HomePage</a></p>
-</li>
 
-<li>
-<p><a href="03-LoginPage.html" target="_blank">Login and Register</a></p>
-</li>
+<!-- toc disabled -->
+</div>
+</div>
 
-<li>
-<p><a href="04-TheRest.html" target="_blank">The Rest of the App</a></p>
-</li>
-
-</ol>
-</div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_resources">Additional Resources</h2>
-<div class="sectionbody">
-<div class="paragraph">
-  <p><a href="https://ionicframework.com/" target="_blank">Ionic Framework</a></p>
-  <p><a href="https://www.udemy.com/learn-ionic-3-from-scratch/learn/v4/overview" target="_blank">Ionic Class Udemy</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_github">Github</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://github.com/code-rhino/PhillyTechWeekStarter" target="_blank">Repo link</a></p>
-<p><a href="https://drive.google.com/drive/folders/1UgX_dLMrvApkZkcC1Wim68oz8UHapiA5?usp=sharing" target="_blank">Assets</a></p>
+  <h1 id="_step1">Step 1</h1>
+  <p>
+    Lets Update the application to Lazy Load HomePage<br>
+    Create a file src/app/pages/home/home.module.ts
+  </p>
+  <div class="listingblock">
+  <div class="content">
+  <pre class="CodeRay highlight"><code data-lang="css">import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+import {HomePage} from './home';
+
+@NgModule({
+    declarations:[
+        HomePage,
+    ],
+    imports:[
+        IonicPageModule.forChild(HomePage),
+    ]
+}) export class HomePageModule {}
+</code></pre>
+  </div>
+  </div>
+
+  </div>
+
+
+  <div class="sect1">
+    <h1 id="_step2">Step 2</h1>
+    <p>Replace the code in src/app/app.module.ts</p>
+
+    <div class="listingblock">
+    <div class="content">
+    <pre class="CodeRay highlight"><code data-lang="css">import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { FormsModule}   from '@angular/forms';
+
+import { MyApp } from './app.component';
+import { PostServiceProvider } from '../providers/post-service/post-service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { UserServiceProvider } from '../providers/user-service/user-service';
+import { ChatsServiceProvider } from '../providers/chats-service/chats-service';
+
+
+@NgModule({
+  declarations: [
+    MyApp,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PostServiceProvider,
+    UserServiceProvider,
+    ChatsServiceProvider,
+    UserServiceProvider
+  ]
+})
+export class AppModule {}
+
+  </code></pre>
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+
+    <div class="sect1">
+      <h1 id="_step3">Step 3</h1>
+      <p>
+          <p>open the code in src/pages/home.ts<br>
+          Add the following lines above the @Component decorator</p>
+      </p>
+      <div class="listingblock">
+      <div class="content">
+      <pre class="CodeRay highlight"><code data-lang="css">import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
+      </code></pre>
+    </div>
+  </div>
+  </div>
+
+  <div class="sect1">
+    <h1 id="_step2">Step 4</h1>
+    <p>Replace the code in src/app/app.component.ts</p>
+
+    <div class="listingblock">
+    <div class="content">
+    <pre class="CodeRay highlight"><code data-lang="css">//Replace public rootPage: any;
+public rootPage: string;
+
+// Replace this.rootPage = HomePage;
+this.rootPage = "HomePage";
+  </code></pre>
+    </div>
+    </div>
+
+    </div>
+
+    <div class="sect1">
+      <h1 id="_step2">Step 5</h1>
+      <p>Replace the code in src/pages/home/home.ts</p>
+
+      <div class="listingblock">
+      <div class="content">
+      <pre class="CodeRay highlight"><code data-lang="css">import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {PostServiceProvider} from '../../providers/post-service/post-service';
+import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+  public posts: any;
+
+  constructor(public nav: NavController, public postService: PostServiceProvider) {
+    this.posts = postService.getAll();
+  }
+
+  toggleLike(post) {
+    // if user liked
+    if(post.liked) {
+      post.likeCount--;
+    } else {
+      post.likeCount++;
+    }
+
+    post.liked = !post.liked
+  }
+
+  // on click, go to post detail
+  viewPost(postId) {
+    //this.nav.push("PostPage", {id: postId})
+  }
+
+  // on click, go to user timeline
+  viewUser(userId) {
+    //this.nav.push(UserPage, {id: userId})
+  }
+}
+
+    </code></pre>
+      </div>
+      </div>
+
+      </div>
+
+
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-5-1 12:16:08 PST
+Last updated 2017-11-16 20:13:24 PST
 </div>
 </div>
 </body>
